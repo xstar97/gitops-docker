@@ -1,0 +1,18 @@
+services:
+  wol:
+    image: ghcr.io/trugamr/wol:0.1.0
+    command: serve
+    network_mode: host
+    container_name: wol
+    environment:
+      WOL_CONFIG: |
+        machines:
+          - name: wife-gaming-pc
+            mac: "34:5A:60:1E:83:89"
+            ip: "10.0.0.63"
+        server:
+          listen: ":7777" # Optional, defaults to :7777
+        ping:
+          privileged: false # Optional, set to true to use privileged ping
+    labels:
+      - wud.tag.include=^\d+\.\d+\.\d+$$

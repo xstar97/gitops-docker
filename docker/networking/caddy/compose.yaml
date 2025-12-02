@@ -1,0 +1,15 @@
+services:
+  caddy:
+    image: caddy:2.10.2-alpine
+    restart: unless-stopped
+    container_name: caddy
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+    volumes:
+      - $DOCKER_VOL/caddy/conf:/etc/caddy
+      - $DOCKER_VOL/caddy/data:/data
+      - $DOCKER_VOL/caddy/config:/config
+    labels:
+      - wud.tag.include=^\d+\.\d+\.\d+-alpine$$
