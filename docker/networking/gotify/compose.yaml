@@ -1,0 +1,9 @@
+services:
+  gotify:
+    image: ghcr.io/gotify/server:2.7.3
+    container_name: gotify
+    ports:
+      - 80
+    volumes:
+      - $DOCKER_VOL/gotify/data:/app/data
+    restart: on-failure
